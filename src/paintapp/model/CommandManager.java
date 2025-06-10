@@ -1,13 +1,18 @@
 package paintapp.model;
 
 import java.util.Stack;
+import paintapp.logging.LoggingManager;
 
 public class CommandManager {
     private static CommandManager instance = null;
     private Stack<Command> undoStack = new Stack<>();
     private Stack<Command> redoStack = new Stack<>();
+    private LoggingManager logger;
 
-    private CommandManager() {}
+    private CommandManager() {
+        this.logger = LoggingManager.getInstance();
+        logger.info("CommandManager initialized");
+    }
 
     public static CommandManager getInstance() {
         if (instance == null)
@@ -18,6 +23,7 @@ public class CommandManager {
     public void addCommand(Command cmd) {
         undoStack.push(cmd);
         redoStack.clear();
+        logger.debug("Command added to history. Undo stack size: " + undoStack.size());
     }
 
     public void undo() {
@@ -25,6 +31,10 @@ public class CommandManager {
             Command cmd = undoStack.pop();
             cmd.undo();
             redoStack.push(cmd);
+            logger.debug("Command undone. Undo stack size: " + undoStack.size() +
+                        ", Redo stack size: " + redoStack.size());
+        } else {
+            logger.warning("Undo requested but no commands available to undo");
         }
     }
 
@@ -33,6 +43,10 @@ public class CommandManager {
             Command cmd = redoStack.pop();
             cmd.execute();
             undoStack.push(cmd);
+            logger.debug("Command redone. Undo stack size: " + undoStack.size() +
+                        ", Redo stack size: " + redoStack.size());
+        } else {
+            logger.warning("Redo requested but no commands available to redo");
         }
     }
 

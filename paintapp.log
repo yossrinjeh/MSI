@@ -1,0 +1,7 @@
+[2025-06-10 09:27:49] [INFO] Logging strategy changed to: FileLogger
+[2025-06-10 09:27:49] [INFO] This is an info message
+[2025-06-10 09:27:49] [WARNING] This is a warning message
+[2025-06-10 09:27:49] [ERROR] This is an error message
+[2025-06-10 09:27:49] [DEBUG] This is a debug message
+[2025-06-10 09:27:49] [INFO] This is a default log message
+[2025-06-10 09:27:49] [CUSTOM] This is a custom level message
