@@ -63,7 +63,24 @@ public class PaintView {
         saveAsItem.setOnAction(e -> controller.saveAsDrawing());
         exitItem.setOnAction(e -> controller.exitApplication());
 
-        menuBar.getMenus().add(fileMenu);
+        // Settings menu for logging options
+        Menu settingsMenu = new Menu("Settings");
+        Menu loggingMenu = new Menu("Logging Method");
+
+        MenuItem consoleLoggingItem = new MenuItem("Console Logging");
+        MenuItem fileLoggingItem = new MenuItem("File Logging");
+        MenuItem databaseLoggingItem = new MenuItem("Database Logging");
+
+        // Add logging menu items
+        loggingMenu.getItems().addAll(consoleLoggingItem, fileLoggingItem, databaseLoggingItem);
+        settingsMenu.getItems().add(loggingMenu);
+
+        // Add event handlers for logging methods
+        consoleLoggingItem.setOnAction(e -> controller.switchToConsoleLogging());
+        fileLoggingItem.setOnAction(e -> controller.switchToFileLogging());
+        databaseLoggingItem.setOnAction(e -> controller.switchToDatabaseLogging());
+
+        menuBar.getMenus().addAll(fileMenu, settingsMenu);
         root.setTop(menuBar);
     }
 

@@ -2,6 +2,8 @@ package paintapp.controller;
 
 import javafx.scene.canvas.Canvas;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.KeyCode;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.paint.Color;
@@ -42,6 +44,10 @@ public class PaintController {
         canvas.setOnMousePressed(this::handleMousePressed);
         canvas.setOnMouseReleased(this::handleMouseReleased);
         canvas.setOnMouseMoved(this::handleMouseMoved);
+
+        // Add keyboard shortcuts for logging methods
+        canvas.setFocusTraversable(true);
+        canvas.setOnKeyPressed(this::handleKeyPressed);
     }
 
     private double startX, startY;
@@ -74,6 +80,29 @@ public class PaintController {
     private void handleMouseMoved(MouseEvent e) {
         updateStatus("Position: (" + String.format("%.0f", e.getX()) + ", " +
                     String.format("%.0f", e.getY()) + ") - " + currentShape + " tool selected");
+    }
+
+    private void handleKeyPressed(KeyEvent e) {
+        // Keyboard shortcuts for logging methods
+        if (e.isControlDown()) {
+            switch (e.getCode()) {
+                case L:
+                    if (e.isShiftDown()) {
+                        // Ctrl+Shift+L = Database Logging
+                        switchToDatabaseLogging();
+                    } else if (e.isAltDown()) {
+                        // Ctrl+Alt+L = File Logging
+                        switchToFileLogging();
+                    } else {
+                        // Ctrl+L = Console Logging
+                        switchToConsoleLogging();
+                    }
+                    e.consume();
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 
     public void setCurrentShape(String shape) {
@@ -321,5 +350,34 @@ public class PaintController {
      */
     public String getCurrentDrawingName() {
         return currentDrawingName;
+    }
+
+    // Logging method switching methods
+
+    /**
+     * Switches logging to console output.
+     */
+    public void switchToConsoleLogging() {
+        logger.useConsoleLogging();
+        logger.info("Switched to Console Logging");
+        updateStatus("Logging method changed to: Console");
+    }
+
+    /**
+     * Switches logging to file output.
+     */
+    public void switchToFileLogging() {
+        logger.useFileLogging();
+        logger.info("Switched to File Logging");
+        updateStatus("Logging method changed to: File");
+    }
+
+    /**
+     * Switches logging to database output.
+     */
+    public void switchToDatabaseLogging() {
+        logger.useDatabaseLogging();
+        logger.info("Switched to Database Logging");
+        updateStatus("Logging method changed to: Database");
     }
 }

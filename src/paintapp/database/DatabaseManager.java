@@ -17,6 +17,7 @@ public class DatabaseManager {
     private static DatabaseManager instance;
     private Connection connection;
     private LoggingManager logger;
+    private boolean isInitializing = false; // Flag to prevent circular dependency
 
     /**
      * Private constructor for Singleton pattern.
@@ -25,6 +26,26 @@ public class DatabaseManager {
     private DatabaseManager() {
         this.logger = LoggingManager.getInstance();
         initializeDatabase();
+    }
+
+    /**
+     * Safe logging method that avoids circular dependency with DatabaseLogger.
+     * Falls back to console logging when database logging is active.
+     */
+    private void safeLog(String level, String message) {
+        if (isInitializing) {
+            // During initialization, use console logging to avoid circular dependency
+            System.out.println("[DatabaseManager] [" + level + "] " + message);
+        } else {
+            // Check if current logger is DatabaseLogger to avoid circular dependency
+            if (logger.getCurrentLogger() instanceof paintapp.logging.DatabaseLogger) {
+                // Use console logging to avoid circular dependency
+                System.out.println("[DatabaseManager] [" + level + "] " + message);
+            } else {
+                // Safe to use LoggingManager
+                logger.log(level, message);
+            }
+        }
     }
 
     /**
@@ -43,6 +64,7 @@ public class DatabaseManager {
      * Initializes the database connection and creates necessary tables.
      */
     private void initializeDatabase() {
+        isInitializing = true; // Set flag to prevent circular dependency
         try {
             // Load MySQL JDBC driver
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -54,17 +76,19 @@ public class DatabaseManager {
                     DatabaseConfig.PASSWORD
             );
 
-            logger.info("Connected to MySQL database: " + DatabaseConfig.DATABASE);
+            safeLog("INFO", "Connected to MySQL database: " + DatabaseConfig.DATABASE);
 
             // Create tables if they don't exist
             createTables();
 
         } catch (ClassNotFoundException e) {
-            logger.error("MySQL JDBC driver not found: " + e.getMessage());
+            safeLog("ERROR", "MySQL JDBC driver not found: " + e.getMessage());
             throw new RuntimeException("MySQL JDBC driver not found", e);
         } catch (SQLException e) {
-            logger.error("Failed to connect to database: " + e.getMessage());
+            safeLog("ERROR", "Failed to connect to database: " + e.getMessage());
             throw new RuntimeException("Database connection failed", e);
+        } finally {
+            isInitializing = false; // Reset flag
         }
     }
 
@@ -76,18 +100,18 @@ public class DatabaseManager {
 
             // Create drawings table
             stmt.execute(DatabaseConfig.CREATE_DRAWINGS_TABLE);
-            logger.info("Drawings table ready");
+            safeLog("INFO", "Drawings table ready");
 
             // Create shapes table
             stmt.execute(DatabaseConfig.CREATE_SHAPES_TABLE);
-            logger.info("Shapes table ready");
+            safeLog("INFO", "Shapes table ready");
 
             // Create logs table
             stmt.execute(DatabaseConfig.CREATE_LOGS_TABLE);
-            logger.info("Logs table ready");
+            safeLog("INFO", "Logs table ready");
 
         } catch (SQLException e) {
-            logger.error("Failed to create database tables: " + e.getMessage());
+            safeLog("ERROR", "Failed to create database tables: " + e.getMessage());
             throw new RuntimeException("Table creation failed", e);
         }
     }
@@ -114,7 +138,7 @@ public class DatabaseManager {
         try {
             return connection != null && !connection.isClosed() && connection.isValid(5);
         } catch (SQLException e) {
-            logger.error("Database connection test failed: " + e.getMessage());
+            safeLog("ERROR", "Database connection test failed: " + e.getMessage());
             return false;
         }
     }
@@ -136,7 +160,7 @@ public class DatabaseManager {
             }
 
         } catch (SQLException e) {
-            logger.error("Failed to retrieve drawing names: " + e.getMessage());
+            safeLog("ERROR", "Failed to retrieve drawing names: " + e.getMessage());
         }
 
         return names;

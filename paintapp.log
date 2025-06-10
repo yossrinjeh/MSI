@@ -5,3 +5,35 @@
 [2025-06-10 09:27:49] [DEBUG] This is a debug message
 [2025-06-10 09:27:49] [INFO] This is a default log message
 [2025-06-10 09:27:49] [CUSTOM] This is a custom level message
+[2025-06-10 10:36:29] [INFO] Logging strategy changed to: FileLogger
+[2025-06-10 10:36:29] [INFO] Switched to File Logging
+[2025-06-10 10:36:31] [DEBUG] Mouse pressed at coordinates: (200.0, 42.0)
+[2025-06-10 10:36:31] [DEBUG] Mouse released at coordinates: (435.0, 291.0)
+[2025-06-10 10:36:31] [INFO] Drawing Line from (200.0, 42.0) to (435.0, 291.0) with color 0x000000ff and fill mode: false
+[2025-06-10 10:36:31] [DEBUG] Command added to history. Undo stack size: 1
+[2025-06-10 10:36:31] [INFO] Shape drawn successfully and added to command history
+[2025-06-10 10:36:32] [DEBUG] Mouse pressed at coordinates: (195.0, 271.0)
+[2025-06-10 10:36:32] [DEBUG] Mouse released at coordinates: (523.0, 33.0)
+[2025-06-10 10:36:32] [INFO] Drawing Line from (195.0, 271.0) to (523.0, 33.0) with color 0x000000ff and fill mode: false
+[2025-06-10 10:36:32] [DEBUG] Command added to history. Undo stack size: 2
+[2025-06-10 10:36:32] [INFO] Shape drawn successfully and added to command history
+[2025-06-10 10:42:17] [INFO] Logging strategy changed to: FileLogger
+[2025-06-10 10:42:17] [INFO] Switched to File Logging
+[2025-06-10 10:42:17] [DEBUG] Mouse pressed at coordinates: (183.0, 342.0)
+[2025-06-10 10:42:17] [DEBUG] Mouse released at coordinates: (495.0, 122.0)
+[2025-06-10 10:42:17] [INFO] Drawing Line from (183.0, 342.0) to (495.0, 122.0) with color 0x000000ff and fill mode: false
+[2025-06-10 10:42:17] [DEBUG] Command added to history. Undo stack size: 2
+[2025-06-10 10:42:17] [INFO] Shape drawn successfully and added to command history
+[2025-06-10 10:42:18] [DEBUG] Mouse pressed at coordinates: (358.0, 52.0)
+[2025-06-10 10:42:18] [DEBUG] Mouse released at coordinates: (415.0, 481.0)
+[2025-06-10 10:42:18] [INFO] Drawing Line from (358.0, 52.0) to (415.0, 481.0) with color 0x000000ff and fill mode: false
+[2025-06-10 10:42:18] [DEBUG] Command added to history. Undo stack size: 3
+[2025-06-10 10:42:18] [INFO] Shape drawn successfully and added to command history
+[2025-06-10 10:45:23] [INFO] Logging strategy changed to: FileLogger
+[2025-06-10 10:45:23] [INFO] Switched to File Logging
+[2025-06-10 10:45:24] [DEBUG] Mouse pressed at coordinates: (100.0, 73.0)
+[2025-06-10 10:45:24] [DEBUG] Mouse released at coordinates: (479.0, 275.0)
+[2025-06-10 10:45:24] [INFO] Drawing Rectangle from (100.0, 73.0) to (479.0, 275.0) with color 0x800000ff and fill mode: true
+[2025-06-10 10:45:24] [DEBUG] Command added to history. Undo stack size: 1
+[2025-06-10 10:45:24] [INFO] Shape drawn successfully and added to command history
+[2025-06-10 10:45:32] [INFO] Application closing...
