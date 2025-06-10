@@ -37,3 +37,160 @@
 [2025-06-10 10:45:24] [DEBUG] Command added to history. Undo stack size: 1
 [2025-06-10 10:45:24] [INFO] Shape drawn successfully and added to command history
 [2025-06-10 10:45:32] [INFO] Application closing...
+[2025-06-10 19:02:55] [INFO] Logging strategy changed to: FileLogger
+[2025-06-10 19:02:55] [INFO] Switched to File Logging
+[2025-06-10 19:02:56] [DEBUG] Mouse pressed at coordinates: (334.4, 87.19999999999999)
+[2025-06-10 19:02:56] [DEBUG] Mouse released at coordinates: (629.6, 97.6)
+[2025-06-10 19:02:56] [INFO] Drawing Rectangle from (334.4, 87.19999999999999) to (629.6, 97.6) with color 0x4d4d4dff and fill mode: true
+[2025-06-10 19:02:56] [DEBUG] Command added to history. Undo stack size: 5
+[2025-06-10 19:02:56] [INFO] Shape drawn successfully and added to command history
+[2025-06-10 19:02:57] [DEBUG] Mouse pressed at coordinates: (416.0, 490.4)
+[2025-06-10 19:02:58] [DEBUG] Mouse released at coordinates: (436.8, 224.0)
+[2025-06-10 19:02:58] [INFO] Drawing Rectangle from (416.0, 490.4) to (436.8, 224.0) with color 0x4d4d4dff and fill mode: true
+[2025-06-10 19:02:58] [DEBUG] Command added to history. Undo stack size: 6
+[2025-06-10 19:02:58] [INFO] Shape drawn successfully and added to command history
+[2025-06-10 19:03:05] [INFO] Undo operation requested
+[2025-06-10 19:03:05] [DEBUG] Command undone. Undo stack size: 5, Redo stack size: 1
+[2025-06-10 19:03:05] [INFO] Undo operation completed
+[2025-06-10 19:03:05] [INFO] Undo operation requested
+[2025-06-10 19:03:05] [DEBUG] Command undone. Undo stack size: 4, Redo stack size: 2
+[2025-06-10 19:03:05] [INFO] Undo operation completed
+[2025-06-10 19:03:06] [INFO] Undo operation requested
+[2025-06-10 19:03:06] [DEBUG] Command undone. Undo stack size: 3, Redo stack size: 3
+[2025-06-10 19:03:06] [INFO] Undo operation completed
+[2025-06-10 19:03:06] [INFO] Undo operation requested
+[2025-06-10 19:03:06] [DEBUG] Command undone. Undo stack size: 2, Redo stack size: 4
+[2025-06-10 19:03:06] [INFO] Undo operation completed
+[2025-06-10 19:03:06] [INFO] Undo operation requested
+[2025-06-10 19:03:06] [DEBUG] Command undone. Undo stack size: 1, Redo stack size: 5
+[2025-06-10 19:03:06] [INFO] Undo operation completed
+[2025-06-10 19:03:06] [INFO] Undo operation requested
+[2025-06-10 19:03:06] [DEBUG] Command undone. Undo stack size: 0, Redo stack size: 6
+[2025-06-10 19:03:06] [INFO] Undo operation completed
+[2025-06-10 19:03:06] [INFO] Undo operation requested
+[2025-06-10 19:03:06] [WARNING] Undo requested but no commands available to undo
+[2025-06-10 19:03:06] [INFO] Undo operation completed
+[2025-06-10 19:03:06] [INFO] Undo operation requested
+[2025-06-10 19:03:06] [WARNING] Undo requested but no commands available to undo
+[2025-06-10 19:03:06] [INFO] Undo operation completed
+[2025-06-10 19:03:07] [INFO] Undo operation requested
+[2025-06-10 19:03:07] [WARNING] Undo requested but no commands available to undo
+[2025-06-10 19:03:07] [INFO] Undo operation completed
+[2025-06-10 19:03:07] [INFO] Undo operation requested
+[2025-06-10 19:03:07] [WARNING] Undo requested but no commands available to undo
+[2025-06-10 19:03:07] [INFO] Undo operation completed
+[2025-06-10 19:03:07] [INFO] Undo operation requested
+[2025-06-10 19:03:07] [WARNING] Undo requested but no commands available to undo
+[2025-06-10 19:03:07] [INFO] Undo operation completed
+[2025-06-10 19:04:03] [DEBUG] Mouse pressed at coordinates: (416.8, 439.20000000000005)
+[2025-06-10 19:04:03] [DEBUG] Mouse released at coordinates: (416.8, 439.20000000000005)
+[2025-06-10 19:04:03] [INFO] Drawing Rectangle from (416.8, 439.20000000000005) to (416.8, 439.20000000000005) with color 0x4d4d4dff and fill mode: true
+[2025-06-10 19:04:03] [DEBUG] Command added to history. Undo stack size: 1
+[2025-06-10 19:04:03] [INFO] Shape drawn successfully and added to command history
+[2025-06-10 19:04:50] [INFO] Shape tool changed from Rectangle to Line
+[2025-06-10 19:04:51] [DEBUG] Mouse pressed at coordinates: (170.4, 64.0)
+[2025-06-10 19:04:51] [DEBUG] Mouse released at coordinates: (861.6, 354.4)
+[2025-06-10 19:04:51] [INFO] Drawing Line from (170.4, 64.0) to (861.6, 354.4) with color 0x4d4d4dff and fill mode: true
+[2025-06-10 19:04:51] [DEBUG] Command added to history. Undo stack size: 2
+[2025-06-10 19:04:51] [INFO] Shape drawn successfully and added to command history
+[2025-06-10 19:04:53] [INFO] Shape tool changed from Line to Rectangle
+[2025-06-10 19:04:54] [DEBUG] Mouse pressed at coordinates: (125.6, 348.0)
+[2025-06-10 19:04:54] [DEBUG] Mouse released at coordinates: (692.8, 114.39999999999998)
+[2025-06-10 19:04:54] [INFO] Drawing Rectangle from (125.6, 348.0) to (692.8, 114.39999999999998) with color 0x4d4d4dff and fill mode: true
+[2025-06-10 19:04:54] [DEBUG] Command added to history. Undo stack size: 3
+[2025-06-10 19:04:54] [INFO] Shape drawn successfully and added to command history
+[2025-06-10 19:04:55] [INFO] Drawing mode changed from fill to stroke
+[2025-06-10 19:04:56] [DEBUG] Mouse pressed at coordinates: (728.0, 47.19999999999999)
+[2025-06-10 19:04:56] [DEBUG] Mouse released at coordinates: (1027.2, 260.0)
+[2025-06-10 19:04:56] [INFO] Drawing Rectangle from (728.0, 47.19999999999999) to (1027.2, 260.0) with color 0x4d4d4dff and fill mode: false
+[2025-06-10 19:04:56] [DEBUG] Command added to history. Undo stack size: 4
+[2025-06-10 19:04:56] [INFO] Shape drawn successfully and added to command history
+[2025-06-10 19:04:58] [INFO] Shape tool changed from Rectangle to Ellipse
+[2025-06-10 19:04:59] [DEBUG] Mouse pressed at coordinates: (141.6, 486.4)
+[2025-06-10 19:05:00] [DEBUG] Mouse released at coordinates: (352.0, 675.2)
+[2025-06-10 19:05:00] [INFO] Drawing Ellipse from (141.6, 486.4) to (352.0, 675.2) with color 0x4d4d4dff and fill mode: false
+[2025-06-10 19:05:00] [DEBUG] Command added to history. Undo stack size: 5
+[2025-06-10 19:05:00] [INFO] Shape drawn successfully and added to command history
+[2025-06-10 19:05:01] [INFO] Drawing mode changed from stroke to fill
+[2025-06-10 19:05:02] [DEBUG] Mouse pressed at coordinates: (505.6, 404.0)
+[2025-06-10 19:05:02] [DEBUG] Mouse released at coordinates: (771.2, 568.8)
+[2025-06-10 19:05:02] [INFO] Drawing Ellipse from (505.6, 404.0) to (771.2, 568.8) with color 0x4d4d4dff and fill mode: true
+[2025-06-10 19:05:02] [DEBUG] Command added to history. Undo stack size: 6
+[2025-06-10 19:05:02] [INFO] Shape drawn successfully and added to command history
+[2025-06-10 19:05:05] [INFO] Undo operation requested
+[2025-06-10 19:05:05] [DEBUG] Command undone. Undo stack size: 5, Redo stack size: 1
+[2025-06-10 19:05:05] [INFO] Undo operation completed
+[2025-06-10 19:05:07] [INFO] Redo operation requested
+[2025-06-10 19:05:07] [DEBUG] Command redone. Undo stack size: 6, Redo stack size: 0
+[2025-06-10 19:05:07] [INFO] Redo operation completed
+[2025-06-10 19:05:07] [INFO] Redo operation requested
+[2025-06-10 19:05:07] [WARNING] Redo requested but no commands available to redo
+[2025-06-10 19:05:07] [INFO] Redo operation completed
+[2025-06-10 19:05:07] [INFO] Redo operation requested
+[2025-06-10 19:05:07] [WARNING] Redo requested but no commands available to redo
+[2025-06-10 19:05:07] [INFO] Redo operation completed
+[2025-06-10 19:05:07] [INFO] Redo operation requested
+[2025-06-10 19:05:07] [WARNING] Redo requested but no commands available to redo
+[2025-06-10 19:05:07] [INFO] Redo operation completed
+[2025-06-10 19:05:15] [INFO] Logging strategy changed to: FileLogger
+[2025-06-10 19:05:15] [INFO] Switched to File Logging
+[2025-06-10 19:05:17] [INFO] Save drawing requested
+[2025-06-10 19:05:17] [INFO] Drawing saved successfully: yossri
+[2025-06-10 19:05:17] [INFO] Drawing saved successfully: yossri
+[2025-06-10 19:05:21] [INFO] Save As drawing requested
+[2025-06-10 19:05:23] [INFO] Drawing saved successfully: test
+[2025-06-10 19:05:23] [INFO] Drawing saved successfully: test
+[2025-06-10 19:05:25] [INFO] Open drawing requested
+[2025-06-10 19:05:25] [INFO] Drawing list refreshed: 4 drawings found
+[2025-06-10 19:05:28] [INFO] Drawing selected for loading: yossri
+[2025-06-10 19:05:28] [INFO] Drawing loaded successfully: yossri
+[2025-06-10 19:05:28] [INFO] Command history cleared
+[2025-06-10 19:05:28] [DEBUG] Command added to history. Undo stack size: 1
+[2025-06-10 19:05:28] [DEBUG] Command added to history. Undo stack size: 2
+[2025-06-10 19:05:28] [DEBUG] Command added to history. Undo stack size: 3
+[2025-06-10 19:05:28] [DEBUG] Command added to history. Undo stack size: 4
+[2025-06-10 19:05:28] [DEBUG] Command added to history. Undo stack size: 5
+[2025-06-10 19:05:28] [DEBUG] Command added to history. Undo stack size: 6
+[2025-06-10 19:05:28] [DEBUG] Command added to history. Undo stack size: 7
+[2025-06-10 19:05:28] [INFO] Drawing loaded to canvas: yossri with 7 shapes
+[2025-06-10 19:05:28] [INFO] Drawing loaded successfully: yossri
+[2025-06-10 19:05:32] [INFO] Open drawing requested
+[2025-06-10 19:05:32] [INFO] Drawing list refreshed: 4 drawings found
+[2025-06-10 19:05:36] [INFO] Drawing selected for loading: bbbb
+[2025-06-10 19:05:36] [INFO] Drawing loaded successfully: bbbb
+[2025-06-10 19:05:36] [INFO] Command history cleared
+[2025-06-10 19:05:36] [DEBUG] Command added to history. Undo stack size: 1
+[2025-06-10 19:05:36] [DEBUG] Command added to history. Undo stack size: 2
+[2025-06-10 19:05:36] [DEBUG] Command added to history. Undo stack size: 3
+[2025-06-10 19:05:36] [DEBUG] Command added to history. Undo stack size: 4
+[2025-06-10 19:05:36] [DEBUG] Command added to history. Undo stack size: 5
+[2025-06-10 19:05:36] [INFO] Drawing loaded to canvas: bbbb with 5 shapes
+[2025-06-10 19:05:36] [INFO] Drawing loaded successfully: bbbb
+[2025-06-10 19:05:39] [INFO] Undo operation requested
+[2025-06-10 19:05:39] [DEBUG] Command undone. Undo stack size: 4, Redo stack size: 1
+[2025-06-10 19:05:39] [INFO] Undo operation completed
+[2025-06-10 19:05:40] [INFO] Redo operation requested
+[2025-06-10 19:05:40] [DEBUG] Command redone. Undo stack size: 5, Redo stack size: 0
+[2025-06-10 19:05:40] [INFO] Redo operation completed
+[2025-06-10 19:05:40] [INFO] Redo operation requested
+[2025-06-10 19:05:40] [WARNING] Redo requested but no commands available to redo
+[2025-06-10 19:05:40] [INFO] Redo operation completed
+[2025-06-10 19:05:41] [INFO] Undo operation requested
+[2025-06-10 19:05:41] [DEBUG] Command undone. Undo stack size: 4, Redo stack size: 1
+[2025-06-10 19:05:41] [INFO] Undo operation completed
+[2025-06-10 19:05:41] [INFO] Undo operation requested
+[2025-06-10 19:05:41] [DEBUG] Command undone. Undo stack size: 3, Redo stack size: 2
+[2025-06-10 19:05:41] [INFO] Undo operation completed
+[2025-06-10 19:05:41] [INFO] Undo operation requested
+[2025-06-10 19:05:41] [DEBUG] Command undone. Undo stack size: 2, Redo stack size: 3
+[2025-06-10 19:05:41] [INFO] Undo operation completed
+[2025-06-10 19:05:41] [INFO] Undo operation requested
+[2025-06-10 19:05:41] [DEBUG] Command undone. Undo stack size: 1, Redo stack size: 4
+[2025-06-10 19:05:41] [INFO] Undo operation completed
+[2025-06-10 19:05:42] [INFO] Undo operation requested
+[2025-06-10 19:05:42] [DEBUG] Command undone. Undo stack size: 0, Redo stack size: 5
+[2025-06-10 19:05:42] [INFO] Undo operation completed
+[2025-06-10 19:05:42] [INFO] Undo operation requested
+[2025-06-10 19:05:42] [WARNING] Undo requested but no commands available to undo
+[2025-06-10 19:05:42] [INFO] Undo operation completed
+[2025-06-10 19:05:47] [INFO] Exit application requested
