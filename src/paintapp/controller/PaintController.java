@@ -3,10 +3,17 @@ package paintapp.controller;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.paint.Color;
 import javafx.application.Platform;
+import javafx.stage.Stage;
 import paintapp.model.*;
 import paintapp.logging.LoggingManager;
+import paintapp.database.DatabaseManager;
+import paintapp.view.DrawingSelectionDialog;
+
+import java.util.List;
+import java.util.Optional;
 
 public class PaintController {
     private Canvas canvas;
@@ -16,11 +23,16 @@ public class PaintController {
     private CommandManager commandManager;
     private LoggingManager logger;
     private Label statusLabel;
+    private DatabaseManager databaseManager;
+    private String currentDrawingName;
+    private Stage parentStage;
 
     public PaintController(Canvas canvas) {
         this.canvas = canvas;
         this.commandManager = CommandManager.getInstance();
         this.logger = LoggingManager.getInstance();
+        this.databaseManager = DatabaseManager.getInstance();
+        this.currentDrawingName = null;
 
         logger.info("PaintController initialized with canvas size: " +
                    canvas.getWidth() + "x" + canvas.getHeight());
@@ -111,34 +123,203 @@ public class PaintController {
         updateStatus("Redo completed");
     }
 
-    // File menu operations (placeholder implementations)
+    // File menu operations
     public void newDrawing() {
         logger.info("New drawing requested");
         canvas.getGraphicsContext2D().clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
-        commandManager = CommandManager.getInstance(); // Reset command history
+        commandManager.clearHistory();
+        currentDrawingName = null;
         updateStatus("New drawing created");
     }
 
     public void openDrawing() {
         logger.info("Open drawing requested");
-        updateStatus("Open drawing - feature coming soon");
-        // TODO: Implement in Phase 3 with database integration
+
+        try {
+            // Show drawing selection dialog
+            DrawingSelectionDialog dialog = new DrawingSelectionDialog(parentStage);
+            String selectedDrawing = dialog.showAndWait();
+
+            if (selectedDrawing != null) {
+                // Load the selected drawing
+                Drawing drawing = databaseManager.loadDrawing(selectedDrawing);
+
+                if (drawing != null) {
+                    loadDrawingToCanvas(drawing);
+                    currentDrawingName = selectedDrawing;
+                    updateStatus("Drawing loaded: " + selectedDrawing);
+                    logger.info("Drawing loaded successfully: " + selectedDrawing);
+                } else {
+                    updateStatus("Failed to load drawing: " + selectedDrawing);
+                    logger.error("Failed to load drawing: " + selectedDrawing);
+                }
+            } else {
+                updateStatus("Open drawing cancelled");
+                logger.info("Open drawing cancelled by user");
+            }
+
+        } catch (Exception e) {
+            logger.error("Error opening drawing: " + e.getMessage());
+            updateStatus("Error opening drawing");
+        }
     }
 
     public void saveDrawing() {
         logger.info("Save drawing requested");
-        updateStatus("Save drawing - feature coming soon");
-        // TODO: Implement in Phase 3 with database integration
+
+        if (currentDrawingName != null) {
+            // Save to existing name
+            saveDrawingWithName(currentDrawingName);
+        } else {
+            // No current name, prompt for name (same as Save As)
+            saveAsDrawing();
+        }
     }
 
     public void saveAsDrawing() {
         logger.info("Save As drawing requested");
-        updateStatus("Save As drawing - feature coming soon");
-        // TODO: Implement in Phase 3 with database integration
+
+        // Prompt for drawing name
+        TextInputDialog dialog = new TextInputDialog();
+        dialog.setTitle("Save Drawing");
+        dialog.setHeaderText("Save Drawing As");
+        dialog.setContentText("Enter a name for your drawing:");
+
+        Optional<String> result = dialog.showAndWait();
+        if (result.isPresent() && !result.get().trim().isEmpty()) {
+            String drawingName = result.get().trim();
+
+            // Check if drawing already exists
+            if (databaseManager.drawingExists(drawingName)) {
+                // Show confirmation dialog
+                javafx.scene.control.Alert confirmAlert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.CONFIRMATION);
+                confirmAlert.setTitle("Drawing Exists");
+                confirmAlert.setHeaderText("Overwrite Drawing");
+                confirmAlert.setContentText("A drawing with the name '" + drawingName + "' already exists.\nDo you want to overwrite it?");
+
+                Optional<javafx.scene.control.ButtonType> confirmResult = confirmAlert.showAndWait();
+                if (confirmResult.isPresent() && confirmResult.get() == javafx.scene.control.ButtonType.OK) {
+                    saveDrawingWithName(drawingName);
+                } else {
+                    updateStatus("Save cancelled");
+                    logger.info("Save cancelled - user chose not to overwrite");
+                }
+            } else {
+                saveDrawingWithName(drawingName);
+            }
+        } else {
+            updateStatus("Save cancelled");
+            logger.info("Save cancelled - no name provided");
+        }
     }
 
     public void exitApplication() {
         logger.info("Exit application requested");
         Platform.exit();
+    }
+
+    // Helper methods for database operations
+
+    /**
+     * Saves the current drawing with the specified name.
+     *
+     * @param drawingName The name to save the drawing as
+     */
+    private void saveDrawingWithName(String drawingName) {
+        try {
+            // Create drawing state from current command manager
+            DrawingState drawingState = DrawingState.fromCommandManager(
+                drawingName,
+                canvas.getWidth(),
+                canvas.getHeight(),
+                commandManager
+            );
+
+            // Convert to Drawing object
+            Drawing drawing = new Drawing(drawingName);
+            drawing.setCanvasWidth(canvas.getWidth());
+            drawing.setCanvasHeight(canvas.getHeight());
+            drawing.setShapes(drawingState.toShapeList());
+
+            // Save to database
+            boolean saved = databaseManager.saveDrawing(drawing);
+
+            if (saved) {
+                currentDrawingName = drawingName;
+                updateStatus("Drawing saved: " + drawingName);
+                logger.info("Drawing saved successfully: " + drawingName);
+            } else {
+                updateStatus("Failed to save drawing");
+                logger.error("Failed to save drawing: " + drawingName);
+            }
+
+        } catch (Exception e) {
+            logger.error("Error saving drawing: " + e.getMessage());
+            updateStatus("Error saving drawing");
+        }
+    }
+
+    /**
+     * Loads a drawing to the canvas.
+     *
+     * @param drawing The drawing to load
+     */
+    private void loadDrawingToCanvas(Drawing drawing) {
+        try {
+            // Clear current canvas and command history
+            canvas.getGraphicsContext2D().clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+            commandManager.clearHistory();
+
+            // Create drawing state from shapes
+            DrawingState drawingState = DrawingState.fromShapeList(
+                drawing.getShapes(),
+                drawing.getName(),
+                drawing.getCanvasWidth(),
+                drawing.getCanvasHeight()
+            );
+
+            // Recreate and execute commands
+            for (DrawingState.SerializableCommand serCmd : drawingState.getCommands()) {
+                Color color = DrawingState.stringToColor(serCmd.getColor());
+
+                DrawCommand command = new DrawCommand(
+                    serCmd.getShapeType(),
+                    serCmd.getX1(),
+                    serCmd.getY1(),
+                    serCmd.getX2(),
+                    serCmd.getY2(),
+                    color,
+                    serCmd.isFilled(),
+                    canvas.getGraphicsContext2D()
+                );
+
+                command.execute();
+                commandManager.addCommand(command);
+            }
+
+            logger.info("Drawing loaded to canvas: " + drawing.getName() + " with " + drawing.getShapes().size() + " shapes");
+
+        } catch (Exception e) {
+            logger.error("Error loading drawing to canvas: " + e.getMessage());
+            throw e;
+        }
+    }
+
+    /**
+     * Sets the parent stage for dialogs.
+     *
+     * @param parentStage The parent stage
+     */
+    public void setParentStage(Stage parentStage) {
+        this.parentStage = parentStage;
+    }
+
+    /**
+     * Gets the current drawing name.
+     *
+     * @return The current drawing name, or null if no drawing is loaded
+     */
+    public String getCurrentDrawingName() {
+        return currentDrawingName;
     }
 }

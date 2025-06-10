@@ -17,9 +17,9 @@ public class Main extends Application {
         logger.info("JavaFX Paint Application starting...");
 
         try {
-            PaintView view = new PaintView();
+            PaintView view = new PaintView(primaryStage);
             Scene scene = new Scene(view.getRoot(), 800, 600);
-            primaryStage.setTitle("JavaFX Paint App");
+            primaryStage.setTitle("JavaFX Paint App - MySQL Database Integration");
             primaryStage.setScene(scene);
             primaryStage.show();
 

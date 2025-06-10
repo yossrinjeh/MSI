@@ -30,4 +30,37 @@ public class DrawCommand implements Command {
         gc.clearRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
         CommandManager.getInstance().replayAllExcept(this);
     }
+
+    // Getters for database serialization
+    public String getShape() {
+        return shape;
+    }
+
+    public double getX1() {
+        return x1;
+    }
+
+    public double getY1() {
+        return y1;
+    }
+
+    public double getX2() {
+        return x2;
+    }
+
+    public double getY2() {
+        return y2;
+    }
+
+    public Color getColor() {
+        return color;
+    }
+
+    public boolean isFillMode() {
+        return fillMode;
+    }
+
+    public GraphicsContext getGraphicsContext() {
+        return gc;
+    }
 }

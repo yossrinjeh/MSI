@@ -16,17 +16,17 @@ public class LoggingManager {
     // Available logging strategies
     private final Logger consoleLogger;
     private final Logger fileLogger;
-    private final Logger databaseLogger;
+    private Logger databaseLogger; // Not final to allow lazy initialization
     
     /**
      * Private constructor for Singleton pattern.
-     * Initializes all available loggers.
+     * Initializes available loggers (database logger is lazy-initialized).
      */
     private LoggingManager() {
         this.consoleLogger = new ConsoleLogger();
         this.fileLogger = new FileLogger();
-        this.databaseLogger = new DatabaseLogger();
-        
+        this.databaseLogger = null; // Lazy initialization to avoid circular dependency
+
         // Default to console logging
         this.currentLogger = consoleLogger;
     }
@@ -73,6 +73,9 @@ public class LoggingManager {
      * Sets logging strategy to database.
      */
     public void useDatabaseLogging() {
+        if (databaseLogger == null) {
+            databaseLogger = new DatabaseLogger();
+        }
         setLogger(databaseLogger);
     }
     

@@ -8,17 +8,21 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.geometry.Insets;
+import javafx.stage.Stage;
 
 public class PaintView {
     private BorderPane root;
     private Canvas canvas;
     private PaintController controller;
     private Label statusLabel;
+    private Stage parentStage;
 
-    public PaintView() {
+    public PaintView(Stage parentStage) {
+        this.parentStage = parentStage;
         root = new BorderPane();
         canvas = new Canvas(800, 600);
         controller = new PaintController(canvas);
+        controller.setParentStage(parentStage);
         root.setCenter(canvas);
 
         // Create menu bar

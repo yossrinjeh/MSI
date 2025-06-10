@@ -5,56 +5,43 @@ import java.time.LocalDateTime;
 
 /**
  * Database implementation of Logger interface.
- * Stores log messages in a SQLite database table.
- * Creates the logs table automatically if it doesn't exist.
- * 
+ * Stores log messages in a MySQL database table.
+ * Uses lazy initialization to avoid circular dependencies.
+ *
  * @author JavaFX Paint App
  * @version 1.0
  */
 public class DatabaseLogger implements Logger {
-    
-    private static final String DEFAULT_DB_NAME = "paintapp.db";
-    private static final String LOGS_TABLE_SQL = """
-        CREATE TABLE IF NOT EXISTS logs (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
-            level VARCHAR(10) NOT NULL,
-            message TEXT NOT NULL
-        )
-        """;
-    
-    private final String databaseUrl;
-    
+
+    private paintapp.database.DatabaseManager databaseManager;
+
     /**
-     * Creates a DatabaseLogger with default database name.
+     * Creates a DatabaseLogger with lazy initialization.
      */
     public DatabaseLogger() {
-        this(DEFAULT_DB_NAME);
+        // Lazy initialization to avoid circular dependency
+        this.databaseManager = null;
     }
-    
+
     /**
-     * Creates a DatabaseLogger with specified database name.
-     * 
-     * @param databaseName The name of the SQLite database file
+     * Gets the database manager, initializing it if necessary.
+     *
+     * @return The database manager
      */
-    public DatabaseLogger(String databaseName) {
-        this.databaseUrl = "jdbc:sqlite:" + databaseName;
-        initializeDatabase();
-    }
-    
-    /**
-     * Initializes the database and creates the logs table if needed.
-     */
-    private void initializeDatabase() {
-        try (Connection conn = DriverManager.getConnection(databaseUrl);
-             Statement stmt = conn.createStatement()) {
-            
-            stmt.execute(LOGS_TABLE_SQL);
-            
-        } catch (SQLException e) {
-            System.err.println("Failed to initialize database for logging: " + e.getMessage());
+    private paintapp.database.DatabaseManager getDatabaseManager() {
+        if (databaseManager == null) {
+            try {
+                databaseManager = paintapp.database.DatabaseManager.getInstance();
+            } catch (Exception e) {
+                // If database manager fails to initialize, we can't log to database
+                System.err.println("DatabaseLogger: Failed to initialize database manager: " + e.getMessage());
+                return null;
+            }
         }
+        return databaseManager;
     }
+    
+
     
     /**
      * Logs a message to database with INFO level.
@@ -68,21 +55,29 @@ public class DatabaseLogger implements Logger {
     
     /**
      * Logs a message to database with specified level.
-     * 
+     *
      * @param level The log level
      * @param message The message to log
      */
     @Override
     public void log(String level, String message) {
-        String sql = "INSERT INTO logs (level, message) VALUES (?, ?)";
-        
-        try (Connection conn = DriverManager.getConnection(databaseUrl);
+        paintapp.database.DatabaseManager dbManager = getDatabaseManager();
+        if (dbManager == null) {
+            // Fallback to console if database manager is not available
+            System.err.println("DatabaseLogger: Database not available, falling back to console");
+            System.err.println("Log message: [" + level.toUpperCase() + "] " + message);
+            return;
+        }
+
+        String sql = "INSERT INTO " + paintapp.database.DatabaseConfig.LOGS_TABLE + " (level, message) VALUES (?, ?)";
+
+        try (Connection conn = dbManager.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            
+
             pstmt.setString(1, level.toUpperCase());
             pstmt.setString(2, message);
             pstmt.executeUpdate();
-            
+
         } catch (SQLException e) {
             // Fallback to console if database logging fails
             System.err.println("Failed to log to database: " + e.getMessage());
@@ -91,11 +86,9 @@ public class DatabaseLogger implements Logger {
     }
     
     /**
-     * Gets the database URL being used.
-     * 
-     * @return The database URL
+     * Gets the database manager being used.
+     *
+     * @return The database manager
      */
-    public String getDatabaseUrl() {
-        return databaseUrl;
-    }
+
 }

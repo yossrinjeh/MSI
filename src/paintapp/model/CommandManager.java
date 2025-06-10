@@ -55,4 +55,42 @@ public class CommandManager {
             if (cmd != exclude) cmd.execute();
         }
     }
+
+    /**
+     * Gets a copy of the undo stack for serialization purposes.
+     *
+     * @return A copy of the undo stack
+     */
+    public Stack<Command> getUndoStack() {
+        return new Stack<Command>() {{
+            addAll(undoStack);
+        }};
+    }
+
+    /**
+     * Clears all command history.
+     */
+    public void clearHistory() {
+        undoStack.clear();
+        redoStack.clear();
+        logger.info("Command history cleared");
+    }
+
+    /**
+     * Gets the number of commands in the undo stack.
+     *
+     * @return The number of undoable commands
+     */
+    public int getUndoStackSize() {
+        return undoStack.size();
+    }
+
+    /**
+     * Gets the number of commands in the redo stack.
+     *
+     * @return The number of redoable commands
+     */
+    public int getRedoStackSize() {
+        return redoStack.size();
+    }
 }
