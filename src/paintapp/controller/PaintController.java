@@ -13,6 +13,7 @@ import paintapp.model.*;
 import paintapp.logging.LoggingManager;
 import paintapp.database.DatabaseManager;
 import paintapp.view.DrawingSelectionDialog;
+import paintapp.observer.DrawingSubject;
 
 import java.util.List;
 import java.util.Optional;
@@ -28,6 +29,7 @@ public class PaintController {
     private DatabaseManager databaseManager;
     private String currentDrawingName;
     private Stage parentStage;
+    private DrawingSubject drawingSubject;
 
     public PaintController(Canvas canvas) {
         this.canvas = canvas;
@@ -35,6 +37,7 @@ public class PaintController {
         this.logger = LoggingManager.getInstance();
         this.databaseManager = DatabaseManager.getInstance();
         this.currentDrawingName = null;
+        this.drawingSubject = commandManager.getDrawingSubject();
 
         logger.info("PaintController initialized with canvas size: " +
                    canvas.getWidth() + "x" + canvas.getHeight());
@@ -110,6 +113,9 @@ public class PaintController {
         this.currentShape = shape;
         logger.info("Shape tool changed from " + previousShape + " to " + shape);
         updateStatus("Ready - " + shape + " tool selected");
+
+        // Notify observers of tool change
+        drawingSubject.notifyToolChanged(previousShape, shape);
     }
 
     public void setCurrentColor(Color color) {
@@ -117,6 +123,9 @@ public class PaintController {
         this.currentColor = color;
         logger.info("Color changed from " + previousColor + " to " + color);
         updateStatus("Color changed to " + color);
+
+        // Notify observers of color change
+        drawingSubject.notifyColorChanged(previousColor, color);
     }
 
     public void setFillMode(boolean fillMode) {
@@ -125,6 +134,9 @@ public class PaintController {
         String mode = fillMode ? "fill" : "stroke";
         logger.info("Drawing mode changed from " + (previousFillMode ? "fill" : "stroke") + " to " + mode);
         updateStatus("Drawing mode: " + mode);
+
+        // Notify observers of fill mode change
+        drawingSubject.notifyFillModeChanged(previousFillMode, fillMode);
     }
 
     public void setStatusLabel(Label statusLabel) {
@@ -159,6 +171,8 @@ public class PaintController {
         commandManager.clearHistory();
         currentDrawingName = null;
         updateStatus("New drawing created");
+
+        // Note: clearHistory() in CommandManager already notifies observers of canvas cleared
     }
 
     public void openDrawing() {
@@ -277,6 +291,9 @@ public class PaintController {
                 currentDrawingName = drawingName;
                 updateStatus("Drawing saved: " + drawingName);
                 logger.info("Drawing saved successfully: " + drawingName);
+
+                // Notify observers of drawing saved
+                drawingSubject.notifyDrawingSaved(drawingName, drawing.getShapes().size());
             } else {
                 updateStatus("Failed to save drawing");
                 logger.error("Failed to save drawing: " + drawingName);
@@ -328,6 +345,9 @@ public class PaintController {
 
             logger.info("Drawing loaded to canvas: " + drawing.getName() + " with " + drawing.getShapes().size() + " shapes");
 
+            // Notify observers of drawing loaded
+            drawingSubject.notifyDrawingLoaded(drawing.getName(), drawing.getShapes().size());
+
         } catch (Exception e) {
             logger.error("Error loading drawing to canvas: " + e.getMessage());
             throw e;
@@ -350,6 +370,15 @@ public class PaintController {
      */
     public String getCurrentDrawingName() {
         return currentDrawingName;
+    }
+
+    /**
+     * Gets the drawing subject for observer management.
+     *
+     * @return The drawing subject
+     */
+    public DrawingSubject getDrawingSubject() {
+        return drawingSubject;
     }
 
     // Logging method switching methods

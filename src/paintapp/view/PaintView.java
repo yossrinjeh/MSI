@@ -1,6 +1,9 @@
 package paintapp.view;
 
 import paintapp.controller.PaintController;
+import paintapp.observer.UIUpdateObserver;
+import paintapp.observer.LoggingObserver;
+import paintapp.observer.StatisticsObserver;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
@@ -18,7 +21,11 @@ public class PaintView {
     private Canvas canvas;
     private PaintController controller;
     private Label statusLabel;
+    private Label shapeCountLabel;
     private Stage parentStage;
+    private UIUpdateObserver uiObserver;
+    private LoggingObserver loggingObserver;
+    private StatisticsObserver statisticsObserver;
 
     public PaintView(Stage parentStage) {
         this.parentStage = parentStage;
@@ -63,6 +70,9 @@ public class PaintView {
 
         // Set up status updates
         controller.setStatusLabel(statusLabel);
+
+        // Initialize and register observers
+        setupObservers();
     }
 
     private void createMenuBar() {
@@ -130,7 +140,21 @@ public class PaintView {
         fileLoggingItem.setOnAction(e -> controller.switchToFileLogging());
         databaseLoggingItem.setOnAction(e -> controller.switchToDatabaseLogging());
 
-        menuBar.getMenus().addAll(fileMenu, settingsMenu);
+        // View menu for statistics
+        Menu viewMenu = new Menu("View");
+        viewMenu.setStyle("-fx-font-size: 14px; -fx-font-weight: 500;");
+
+        MenuItem showStatsItem = new MenuItem("Show Statistics");
+        showStatsItem.setStyle(menuItemStyle);
+        showStatsItem.setOnAction(e -> showStatistics());
+
+        MenuItem resetStatsItem = new MenuItem("Reset Statistics");
+        resetStatsItem.setStyle(menuItemStyle);
+        resetStatsItem.setOnAction(e -> resetStatistics());
+
+        viewMenu.getItems().addAll(showStatsItem, resetStatsItem);
+
+        menuBar.getMenus().addAll(fileMenu, viewMenu, settingsMenu);
         root.setTop(menuBar);
     }
 
@@ -286,6 +310,15 @@ public class PaintView {
             "-fx-padding: 2 0 2 0;"
         );
 
+        // Create shape count label
+        shapeCountLabel = new Label("Shapes: 0");
+        shapeCountLabel.setStyle(
+            "-fx-font-size: 12px; " +
+            "-fx-font-weight: 500; " +
+            "-fx-text-fill: #6c757d; " +
+            "-fx-padding: 2 0 2 0;"
+        );
+
         // Add a small status indicator
         Region statusIndicator = new Region();
         statusIndicator.setPrefSize(8, 8);
@@ -299,8 +332,75 @@ public class PaintView {
         statusContent.setAlignment(Pos.CENTER_LEFT);
         statusContent.getChildren().addAll(statusIndicator, statusLabel);
 
-        statusBar.getChildren().add(statusContent);
+        // Add spacer to push shape count to the right
+        Region spacer = new Region();
+        HBox.setHgrow(spacer, javafx.scene.layout.Priority.ALWAYS);
+
+        statusBar.getChildren().addAll(statusContent, spacer, shapeCountLabel);
         root.setBottom(statusBar);
+    }
+
+    /**
+     * Sets up and registers observers for the drawing events.
+     */
+    private void setupObservers() {
+        // Create UI update observer
+        uiObserver = new UIUpdateObserver(statusLabel, shapeCountLabel);
+
+        // Create logging observer
+        loggingObserver = new LoggingObserver();
+
+        // Create statistics observer
+        statisticsObserver = new StatisticsObserver();
+
+        // Register observers with the drawing subject
+        controller.getDrawingSubject().addObserver(uiObserver);
+        controller.getDrawingSubject().addObserver(loggingObserver);
+        controller.getDrawingSubject().addObserver(statisticsObserver);
+
+        // Log observer registration
+        System.out.println("Observers registered: UI Update Observer, Logging Observer, and Statistics Observer");
+    }
+
+    /**
+     * Shows the statistics dialog.
+     */
+    private void showStatistics() {
+        if (statisticsObserver != null) {
+            statisticsObserver.printStatistics();
+
+            // Also show in a dialog for better user experience
+            javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.INFORMATION);
+            alert.setTitle("Drawing Statistics");
+            alert.setHeaderText("Session Statistics");
+
+            String stats = String.format(
+                "Current shapes on canvas: %d\n" +
+                "Most used shape: %s\n" +
+                "Most used color: %s",
+                statisticsObserver.getCurrentShapeCount(),
+                statisticsObserver.getMostUsedShapeType(),
+                statisticsObserver.getMostUsedColor()
+            );
+
+            alert.setContentText(stats);
+            alert.showAndWait();
+        }
+    }
+
+    /**
+     * Resets the statistics.
+     */
+    private void resetStatistics() {
+        if (statisticsObserver != null) {
+            statisticsObserver.resetStatistics();
+
+            javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.INFORMATION);
+            alert.setTitle("Statistics Reset");
+            alert.setHeaderText(null);
+            alert.setContentText("Drawing statistics have been reset.");
+            alert.showAndWait();
+        }
     }
 
     public BorderPane getRoot() {

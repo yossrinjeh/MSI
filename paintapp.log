@@ -194,3 +194,20 @@
 [2025-06-10 19:05:42] [WARNING] Undo requested but no commands available to undo
 [2025-06-10 19:05:42] [INFO] Undo operation completed
 [2025-06-10 19:05:47] [INFO] Exit application requested
+[2025-06-10 21:17:25] [INFO] Logging strategy changed to: FileLogger
+[2025-06-10 21:17:25] [INFO] Switched to File Logging
+[2025-06-10 21:17:25] [DEBUG] Mouse pressed at coordinates: (524.0, 82.4)
+[2025-06-10 21:17:25] [DEBUG] Mouse released at coordinates: (644.0, 479.20000000000005)
+[2025-06-10 21:17:25] [INFO] Drawing Line from (524.0, 82.4) to (644.0, 479.20000000000005) with color 0xcc3333ff and fill mode: true
+[2025-06-10 21:17:25] [DEBUG] Command added to history. Undo stack size: 11
+[2025-06-10 21:17:25] [INFO] Shape drawn successfully and added to command history
+[2025-06-10 21:17:26] [DEBUG] Mouse pressed at coordinates: (847.2, 105.6)
+[2025-06-10 21:17:26] [DEBUG] Mouse released at coordinates: (949.6, 544.0)
+[2025-06-10 21:17:26] [INFO] Drawing Line from (847.2, 105.6) to (949.6, 544.0) with color 0xcc3333ff and fill mode: true
+[2025-06-10 21:17:26] [DEBUG] Command added to history. Undo stack size: 12
+[2025-06-10 21:17:26] [INFO] Shape drawn successfully and added to command history
+[2025-06-10 21:17:26] [DEBUG] Mouse pressed at coordinates: (947.2, 137.60000000000002)
+[2025-06-10 21:17:26] [DEBUG] Mouse released at coordinates: (1031.2, 581.6)
+[2025-06-10 21:17:26] [INFO] Drawing Line from (947.2, 137.60000000000002) to (1031.2, 581.6) with color 0xcc3333ff and fill mode: true
+[2025-06-10 21:17:26] [DEBUG] Command added to history. Undo stack size: 13
+[2025-06-10 21:17:26] [INFO] Shape drawn successfully and added to command history
