@@ -1,0 +1,556 @@
+{
+  "_type": "Project",
+  "name": "Strategy Pattern - Paint Application",
+  "ownedElements": [
+    {
+      "_type": "UMLModel",
+      "name": "StrategyPatternModel",
+      "ownedElements": [
+        {
+          "_type": "UMLPackage",
+          "name": "paintapp.logging",
+          "ownedElements": [
+            {
+              "_type": "UMLInterface",
+              "name": "Logger",
+              "operations": [
+                {
+                  "_type": "UMLOperation",
+                  "name": "log",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "message",
+                      "type": "String"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "log",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "level",
+                      "type": "String"
+                    },
+                    {
+                      "_type": "UMLParameter",
+                      "name": "message",
+                      "type": "String"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "info",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "message",
+                      "type": "String"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "warning",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "message",
+                      "type": "String"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "error",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "message",
+                      "type": "String"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "debug",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "message",
+                      "type": "String"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "_type": "UMLClass",
+              "name": "LoggingManager",
+              "stereotype": "singleton",
+              "attributes": [
+                {
+                  "_type": "UMLAttribute",
+                  "name": "instance",
+                  "type": "LoggingManager",
+                  "visibility": "private",
+                  "isStatic": true
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "currentLogger",
+                  "type": "Logger",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "consoleLogger",
+                  "type": "Logger",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "fileLogger",
+                  "type": "Logger",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "databaseLogger",
+                  "type": "Logger",
+                  "visibility": "private"
+                }
+              ],
+              "operations": [
+                {
+                  "_type": "UMLOperation",
+                  "name": "LoggingManager",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "getInstance",
+                  "type": "LoggingManager",
+                  "isStatic": true
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "setLogger",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "logger",
+                      "type": "Logger"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "useConsoleLogging"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "useFileLogging"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "useDatabaseLogging"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "log",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "message",
+                      "type": "String"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "log",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "level",
+                      "type": "String"
+                    },
+                    {
+                      "_type": "UMLParameter",
+                      "name": "message",
+                      "type": "String"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "info",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "message",
+                      "type": "String"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "warning",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "message",
+                      "type": "String"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "error",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "message",
+                      "type": "String"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "debug",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "message",
+                      "type": "String"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "getCurrentLogger",
+                  "type": "Logger"
+                }
+              ]
+            },
+            {
+              "_type": "UMLClass",
+              "name": "ConsoleLogger",
+              "operations": [
+                {
+                  "_type": "UMLOperation",
+                  "name": "log",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "message",
+                      "type": "String"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "log",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "level",
+                      "type": "String"
+                    },
+                    {
+                      "_type": "UMLParameter",
+                      "name": "message",
+                      "type": "String"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "info",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "message",
+                      "type": "String"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "warning",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "message",
+                      "type": "String"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "error",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "message",
+                      "type": "String"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "debug",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "message",
+                      "type": "String"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "_type": "UMLClass",
+              "name": "FileLogger",
+              "attributes": [
+                {
+                  "_type": "UMLAttribute",
+                  "name": "LOG_FILE",
+                  "type": "String",
+                  "visibility": "private",
+                  "isStatic": true
+                }
+              ],
+              "operations": [
+                {
+                  "_type": "UMLOperation",
+                  "name": "log",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "message",
+                      "type": "String"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "log",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "level",
+                      "type": "String"
+                    },
+                    {
+                      "_type": "UMLParameter",
+                      "name": "message",
+                      "type": "String"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "info",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "message",
+                      "type": "String"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "warning",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "message",
+                      "type": "String"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "error",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "message",
+                      "type": "String"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "debug",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "message",
+                      "type": "String"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "writeToFile",
+                  "visibility": "private",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "message",
+                      "type": "String"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "getCurrentTimestamp",
+                  "type": "String",
+                  "visibility": "private"
+                }
+              ]
+            },
+            {
+              "_type": "UMLClass",
+              "name": "DatabaseLogger",
+              "attributes": [
+                {
+                  "_type": "UMLAttribute",
+                  "name": "databaseManager",
+                  "type": "DatabaseManager",
+                  "visibility": "private"
+                }
+              ],
+              "operations": [
+                {
+                  "_type": "UMLOperation",
+                  "name": "log",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "message",
+                      "type": "String"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "log",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "level",
+                      "type": "String"
+                    },
+                    {
+                      "_type": "UMLParameter",
+                      "name": "message",
+                      "type": "String"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "info",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "message",
+                      "type": "String"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "warning",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "message",
+                      "type": "String"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "error",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "message",
+                      "type": "String"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "debug",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "message",
+                      "type": "String"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "logToDatabase",
+                  "visibility": "private",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "level",
+                      "type": "String"
+                    },
+                    {
+                      "_type": "UMLParameter",
+                      "name": "message",
+                      "type": "String"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "_type": "UMLInterfaceRealization",
+              "source": "ConsoleLogger",
+              "target": "Logger"
+            },
+            {
+              "_type": "UMLInterfaceRealization",
+              "source": "FileLogger",
+              "target": "Logger"
+            },
+            {
+              "_type": "UMLInterfaceRealization",
+              "source": "DatabaseLogger",
+              "target": "Logger"
+            },
+            {
+              "_type": "UMLAssociation",
+              "end1": {
+                "_type": "UMLAssociationEnd",
+                "reference": "LoggingManager",
+                "multiplicity": "1"
+              },
+              "end2": {
+                "_type": "UMLAssociationEnd",
+                "reference": "Logger",
+                "multiplicity": "1"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

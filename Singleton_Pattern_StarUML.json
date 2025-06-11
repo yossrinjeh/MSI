@@ -1,0 +1,424 @@
+{
+  "_type": "Project",
+  "name": "Singleton Pattern - Paint Application",
+  "ownedElements": [
+    {
+      "_type": "UMLModel",
+      "name": "SingletonPatternModel",
+      "ownedElements": [
+        {
+          "_type": "UMLPackage",
+          "name": "paintapp.model",
+          "ownedElements": [
+            {
+              "_type": "UMLClass",
+              "name": "CommandManager",
+              "stereotype": "singleton",
+              "attributes": [
+                {
+                  "_type": "UMLAttribute",
+                  "name": "instance",
+                  "type": "CommandManager",
+                  "visibility": "private",
+                  "isStatic": true
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "undoStack",
+                  "type": "Stack<Command>",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "redoStack",
+                  "type": "Stack<Command>",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "logger",
+                  "type": "LoggingManager",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "drawingSubject",
+                  "type": "DrawingSubject",
+                  "visibility": "private"
+                }
+              ],
+              "operations": [
+                {
+                  "_type": "UMLOperation",
+                  "name": "CommandManager",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "getInstance",
+                  "type": "CommandManager",
+                  "isStatic": true
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "addCommand",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "cmd",
+                      "type": "Command"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "undo"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "redo"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "replayAllExcept",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "exclude",
+                      "type": "Command"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "clearHistory"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "getDrawingSubject",
+                  "type": "DrawingSubject"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "getUndoStackSize",
+                  "type": "int"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "getRedoStackSize",
+                  "type": "int"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "getUndoStack",
+                  "type": "Stack<Command>"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_type": "UMLPackage",
+          "name": "paintapp.logging",
+          "ownedElements": [
+            {
+              "_type": "UMLClass",
+              "name": "LoggingManager",
+              "stereotype": "singleton",
+              "attributes": [
+                {
+                  "_type": "UMLAttribute",
+                  "name": "instance",
+                  "type": "LoggingManager",
+                  "visibility": "private",
+                  "isStatic": true
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "currentLogger",
+                  "type": "Logger",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "consoleLogger",
+                  "type": "Logger",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "fileLogger",
+                  "type": "Logger",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "databaseLogger",
+                  "type": "Logger",
+                  "visibility": "private"
+                }
+              ],
+              "operations": [
+                {
+                  "_type": "UMLOperation",
+                  "name": "LoggingManager",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "getInstance",
+                  "type": "LoggingManager",
+                  "isStatic": true
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "setLogger",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "logger",
+                      "type": "Logger"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "useConsoleLogging"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "useFileLogging"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "useDatabaseLogging"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "log",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "message",
+                      "type": "String"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "log",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "level",
+                      "type": "String"
+                    },
+                    {
+                      "_type": "UMLParameter",
+                      "name": "message",
+                      "type": "String"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "info",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "message",
+                      "type": "String"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "warning",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "message",
+                      "type": "String"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "error",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "message",
+                      "type": "String"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "debug",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "message",
+                      "type": "String"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "getCurrentLogger",
+                  "type": "Logger"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_type": "UMLPackage",
+          "name": "paintapp.database",
+          "ownedElements": [
+            {
+              "_type": "UMLClass",
+              "name": "DatabaseManager",
+              "stereotype": "singleton",
+              "attributes": [
+                {
+                  "_type": "UMLAttribute",
+                  "name": "instance",
+                  "type": "DatabaseManager",
+                  "visibility": "private",
+                  "isStatic": true
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "connection",
+                  "type": "Connection",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "logger",
+                  "type": "LoggingManager",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "isInitializing",
+                  "type": "boolean",
+                  "visibility": "private"
+                }
+              ],
+              "operations": [
+                {
+                  "_type": "UMLOperation",
+                  "name": "DatabaseManager",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "getInstance",
+                  "type": "DatabaseManager",
+                  "isStatic": true
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "getConnection",
+                  "type": "Connection"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "testConnection",
+                  "type": "boolean"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "getDrawingNames",
+                  "type": "List<String>"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "drawingExists",
+                  "type": "boolean",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "name",
+                      "type": "String"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "saveDrawing",
+                  "type": "boolean",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "drawing",
+                      "type": "Drawing"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "loadDrawing",
+                  "type": "Drawing",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "drawingName",
+                      "type": "String"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "deleteDrawing",
+                  "type": "boolean",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "drawingName",
+                      "type": "String"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "closeConnection"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "initializeDatabase",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "createTables",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "safeLog",
+                  "visibility": "private",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "level",
+                      "type": "String"
+                    },
+                    {
+                      "_type": "UMLParameter",
+                      "name": "message",
+                      "type": "String"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,517 @@
+{
+  "_type": "Project",
+  "name": "Observer Pattern - Paint Application",
+  "ownedElements": [
+    {
+      "_type": "UMLModel",
+      "name": "ObserverPatternModel",
+      "ownedElements": [
+        {
+          "_type": "UMLPackage",
+          "name": "paintapp.observer",
+          "ownedElements": [
+            {
+              "_type": "UMLInterface",
+              "name": "DrawingObserver",
+              "operations": [
+                {
+                  "_type": "UMLOperation",
+                  "name": "onShapeAdded",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "command",
+                      "type": "DrawCommand"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "onShapeRemoved",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "command",
+                      "type": "DrawCommand"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "onCanvasCleared"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "onDrawingLoaded",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "drawingName",
+                      "type": "String"
+                    },
+                    {
+                      "_type": "UMLParameter",
+                      "name": "shapeCount",
+                      "type": "int"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "onDrawingSaved",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "drawingName",
+                      "type": "String"
+                    },
+                    {
+                      "_type": "UMLParameter",
+                      "name": "shapeCount",
+                      "type": "int"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "onToolChanged",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "previousTool",
+                      "type": "String"
+                    },
+                    {
+                      "_type": "UMLParameter",
+                      "name": "newTool",
+                      "type": "String"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "onColorChanged",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "previousColor",
+                      "type": "Color"
+                    },
+                    {
+                      "_type": "UMLParameter",
+                      "name": "newColor",
+                      "type": "Color"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "onFillModeChanged",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "previousFillMode",
+                      "type": "boolean"
+                    },
+                    {
+                      "_type": "UMLParameter",
+                      "name": "newFillMode",
+                      "type": "boolean"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "onUndoPerformed",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "undoStackSize",
+                      "type": "int"
+                    },
+                    {
+                      "_type": "UMLParameter",
+                      "name": "redoStackSize",
+                      "type": "int"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "onRedoPerformed",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "undoStackSize",
+                      "type": "int"
+                    },
+                    {
+                      "_type": "UMLParameter",
+                      "name": "redoStackSize",
+                      "type": "int"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "_type": "UMLClass",
+              "name": "DrawingSubject",
+              "attributes": [
+                {
+                  "_type": "UMLAttribute",
+                  "name": "observers",
+                  "type": "List<DrawingObserver>",
+                  "visibility": "private"
+                }
+              ],
+              "operations": [
+                {
+                  "_type": "UMLOperation",
+                  "name": "addObserver",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "observer",
+                      "type": "DrawingObserver"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "removeObserver",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "observer",
+                      "type": "DrawingObserver"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "clearObservers"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "getObserverCount",
+                  "type": "int"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "notifyShapeAdded",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "command",
+                      "type": "DrawCommand"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "notifyShapeRemoved",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "command",
+                      "type": "DrawCommand"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "notifyCanvasCleared"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "notifyDrawingLoaded",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "drawingName",
+                      "type": "String"
+                    },
+                    {
+                      "_type": "UMLParameter",
+                      "name": "shapeCount",
+                      "type": "int"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "notifyDrawingSaved",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "drawingName",
+                      "type": "String"
+                    },
+                    {
+                      "_type": "UMLParameter",
+                      "name": "shapeCount",
+                      "type": "int"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "notifyToolChanged",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "previousTool",
+                      "type": "String"
+                    },
+                    {
+                      "_type": "UMLParameter",
+                      "name": "newTool",
+                      "type": "String"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "notifyColorChanged",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "previousColor",
+                      "type": "Color"
+                    },
+                    {
+                      "_type": "UMLParameter",
+                      "name": "newColor",
+                      "type": "Color"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "notifyFillModeChanged",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "previousFillMode",
+                      "type": "boolean"
+                    },
+                    {
+                      "_type": "UMLParameter",
+                      "name": "newFillMode",
+                      "type": "boolean"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "notifyUndoPerformed",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "undoStackSize",
+                      "type": "int"
+                    },
+                    {
+                      "_type": "UMLParameter",
+                      "name": "redoStackSize",
+                      "type": "int"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "notifyRedoPerformed",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "undoStackSize",
+                      "type": "int"
+                    },
+                    {
+                      "_type": "UMLParameter",
+                      "name": "redoStackSize",
+                      "type": "int"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "_type": "UMLClass",
+              "name": "UIUpdateObserver",
+              "attributes": [
+                {
+                  "_type": "UMLAttribute",
+                  "name": "statusLabel",
+                  "type": "Label",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "shapeCountLabel",
+                  "type": "Label",
+                  "visibility": "private"
+                }
+              ],
+              "operations": [
+                {
+                  "_type": "UMLOperation",
+                  "name": "onShapeAdded",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "command",
+                      "type": "DrawCommand"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "onShapeRemoved",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "command",
+                      "type": "DrawCommand"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "onCanvasCleared"
+                }
+              ]
+            },
+            {
+              "_type": "UMLClass",
+              "name": "LoggingObserver",
+              "operations": [
+                {
+                  "_type": "UMLOperation",
+                  "name": "onShapeAdded",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "command",
+                      "type": "DrawCommand"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "onShapeRemoved",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "command",
+                      "type": "DrawCommand"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "onCanvasCleared"
+                }
+              ]
+            },
+            {
+              "_type": "UMLClass",
+              "name": "StatisticsObserver",
+              "attributes": [
+                {
+                  "_type": "UMLAttribute",
+                  "name": "totalShapesDrawn",
+                  "type": "int",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "totalShapesRemoved",
+                  "type": "int",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "shapeTypeCount",
+                  "type": "Map<String, Integer>",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "colorUsageCount",
+                  "type": "Map<String, Integer>",
+                  "visibility": "private"
+                }
+              ],
+              "operations": [
+                {
+                  "_type": "UMLOperation",
+                  "name": "onShapeAdded",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "command",
+                      "type": "DrawCommand"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "printStatistics"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "resetStatistics"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "getCurrentShapeCount",
+                  "type": "int"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "getMostUsedShapeType",
+                  "type": "String"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "getMostUsedColor",
+                  "type": "String"
+                }
+              ]
+            },
+            {
+              "_type": "UMLInterfaceRealization",
+              "source": "UIUpdateObserver",
+              "target": "DrawingObserver"
+            },
+            {
+              "_type": "UMLInterfaceRealization",
+              "source": "LoggingObserver",
+              "target": "DrawingObserver"
+            },
+            {
+              "_type": "UMLInterfaceRealization",
+              "source": "StatisticsObserver",
+              "target": "DrawingObserver"
+            },
+            {
+              "_type": "UMLAssociation",
+              "end1": {
+                "_type": "UMLAssociationEnd",
+                "reference": "DrawingSubject",
+                "multiplicity": "1"
+              },
+              "end2": {
+                "_type": "UMLAssociationEnd",
+                "reference": "DrawingObserver",
+                "multiplicity": "*"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

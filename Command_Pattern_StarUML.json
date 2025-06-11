@@ -1,0 +1,415 @@
+{
+  "_type": "Project",
+  "name": "Command Pattern - Paint Application",
+  "ownedElements": [
+    {
+      "_type": "UMLModel",
+      "name": "CommandPatternModel",
+      "ownedElements": [
+        {
+          "_type": "UMLPackage",
+          "name": "paintapp.model",
+          "ownedElements": [
+            {
+              "_type": "UMLInterface",
+              "name": "Command",
+              "operations": [
+                {
+                  "_type": "UMLOperation",
+                  "name": "execute"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "undo"
+                }
+              ]
+            },
+            {
+              "_type": "UMLClass",
+              "name": "DrawCommand",
+              "attributes": [
+                {
+                  "_type": "UMLAttribute",
+                  "name": "shape",
+                  "type": "String",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "x1",
+                  "type": "double",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "y1",
+                  "type": "double",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "x2",
+                  "type": "double",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "y2",
+                  "type": "double",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "color",
+                  "type": "Color",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "fillMode",
+                  "type": "boolean",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "gc",
+                  "type": "GraphicsContext",
+                  "visibility": "private"
+                }
+              ],
+              "operations": [
+                {
+                  "_type": "UMLOperation",
+                  "name": "DrawCommand",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "shape",
+                      "type": "String"
+                    },
+                    {
+                      "_type": "UMLParameter",
+                      "name": "x1",
+                      "type": "double"
+                    },
+                    {
+                      "_type": "UMLParameter",
+                      "name": "y1",
+                      "type": "double"
+                    },
+                    {
+                      "_type": "UMLParameter",
+                      "name": "x2",
+                      "type": "double"
+                    },
+                    {
+                      "_type": "UMLParameter",
+                      "name": "y2",
+                      "type": "double"
+                    },
+                    {
+                      "_type": "UMLParameter",
+                      "name": "color",
+                      "type": "Color"
+                    },
+                    {
+                      "_type": "UMLParameter",
+                      "name": "fillMode",
+                      "type": "boolean"
+                    },
+                    {
+                      "_type": "UMLParameter",
+                      "name": "gc",
+                      "type": "GraphicsContext"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "execute"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "undo"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "getShape",
+                  "type": "String"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "getX1",
+                  "type": "double"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "getY1",
+                  "type": "double"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "getX2",
+                  "type": "double"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "getY2",
+                  "type": "double"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "getColor",
+                  "type": "Color"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "isFillMode",
+                  "type": "boolean"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "getGraphicsContext",
+                  "type": "GraphicsContext"
+                }
+              ]
+            },
+            {
+              "_type": "UMLClass",
+              "name": "CommandManager",
+              "stereotype": "singleton",
+              "attributes": [
+                {
+                  "_type": "UMLAttribute",
+                  "name": "instance",
+                  "type": "CommandManager",
+                  "visibility": "private",
+                  "isStatic": true
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "undoStack",
+                  "type": "Stack<Command>",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "redoStack",
+                  "type": "Stack<Command>",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "logger",
+                  "type": "LoggingManager",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "drawingSubject",
+                  "type": "DrawingSubject",
+                  "visibility": "private"
+                }
+              ],
+              "operations": [
+                {
+                  "_type": "UMLOperation",
+                  "name": "CommandManager",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "getInstance",
+                  "type": "CommandManager",
+                  "isStatic": true
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "addCommand",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "cmd",
+                      "type": "Command"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "undo"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "redo"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "replayAllExcept",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "exclude",
+                      "type": "Command"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "clearHistory"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "getDrawingSubject",
+                  "type": "DrawingSubject"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "getUndoStackSize",
+                  "type": "int"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "getRedoStackSize",
+                  "type": "int"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "getUndoStack",
+                  "type": "Stack<Command>"
+                }
+              ]
+            },
+            {
+              "_type": "UMLInterfaceRealization",
+              "source": "DrawCommand",
+              "target": "Command"
+            },
+            {
+              "_type": "UMLAssociation",
+              "end1": {
+                "_type": "UMLAssociationEnd",
+                "reference": "CommandManager",
+                "multiplicity": "1"
+              },
+              "end2": {
+                "_type": "UMLAssociationEnd",
+                "reference": "Command",
+                "multiplicity": "*"
+              }
+            }
+          ]
+        },
+        {
+          "_type": "UMLPackage",
+          "name": "paintapp.controller",
+          "ownedElements": [
+            {
+              "_type": "UMLClass",
+              "name": "PaintController",
+              "attributes": [
+                {
+                  "_type": "UMLAttribute",
+                  "name": "canvas",
+                  "type": "Canvas",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "currentShape",
+                  "type": "String",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "currentColor",
+                  "type": "Color",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "fillMode",
+                  "type": "boolean",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "commandManager",
+                  "type": "CommandManager",
+                  "visibility": "private"
+                }
+              ],
+              "operations": [
+                {
+                  "_type": "UMLOperation",
+                  "name": "PaintController",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "canvas",
+                      "type": "Canvas"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "initEvents"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "setCurrentShape",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "shape",
+                      "type": "String"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "setCurrentColor",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "color",
+                      "type": "Color"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "setFillMode",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "fillMode",
+                      "type": "boolean"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "undo"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "redo"
+                }
+              ]
+            },
+            {
+              "_type": "UMLDependency",
+              "source": "PaintController",
+              "target": "CommandManager"
+            },
+            {
+              "_type": "UMLDependency",
+              "source": "PaintController",
+              "target": "DrawCommand"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,394 @@
+{
+  "_type": "Project",
+  "name": "Factory Pattern - Paint Application",
+  "ownedElements": [
+    {
+      "_type": "UMLModel",
+      "name": "FactoryPatternModel",
+      "ownedElements": [
+        {
+          "_type": "UMLPackage",
+          "name": "paintapp.model",
+          "ownedElements": [
+            {
+              "_type": "UMLClass",
+              "name": "ShapeFactory",
+              "stereotype": "utility",
+              "operations": [
+                {
+                  "_type": "UMLOperation",
+                  "name": "drawShape",
+                  "isStatic": true,
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "shapeType",
+                      "type": "String"
+                    },
+                    {
+                      "_type": "UMLParameter",
+                      "name": "x1",
+                      "type": "double"
+                    },
+                    {
+                      "_type": "UMLParameter",
+                      "name": "y1",
+                      "type": "double"
+                    },
+                    {
+                      "_type": "UMLParameter",
+                      "name": "x2",
+                      "type": "double"
+                    },
+                    {
+                      "_type": "UMLParameter",
+                      "name": "y2",
+                      "type": "double"
+                    },
+                    {
+                      "_type": "UMLParameter",
+                      "name": "color",
+                      "type": "Color"
+                    },
+                    {
+                      "_type": "UMLParameter",
+                      "name": "fillMode",
+                      "type": "boolean"
+                    },
+                    {
+                      "_type": "UMLParameter",
+                      "name": "gc",
+                      "type": "GraphicsContext"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "drawLine",
+                  "visibility": "private",
+                  "isStatic": true,
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "x1",
+                      "type": "double"
+                    },
+                    {
+                      "_type": "UMLParameter",
+                      "name": "y1",
+                      "type": "double"
+                    },
+                    {
+                      "_type": "UMLParameter",
+                      "name": "x2",
+                      "type": "double"
+                    },
+                    {
+                      "_type": "UMLParameter",
+                      "name": "y2",
+                      "type": "double"
+                    },
+                    {
+                      "_type": "UMLParameter",
+                      "name": "color",
+                      "type": "Color"
+                    },
+                    {
+                      "_type": "UMLParameter",
+                      "name": "gc",
+                      "type": "GraphicsContext"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "drawRectangle",
+                  "visibility": "private",
+                  "isStatic": true,
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "x1",
+                      "type": "double"
+                    },
+                    {
+                      "_type": "UMLParameter",
+                      "name": "y1",
+                      "type": "double"
+                    },
+                    {
+                      "_type": "UMLParameter",
+                      "name": "x2",
+                      "type": "double"
+                    },
+                    {
+                      "_type": "UMLParameter",
+                      "name": "y2",
+                      "type": "double"
+                    },
+                    {
+                      "_type": "UMLParameter",
+                      "name": "color",
+                      "type": "Color"
+                    },
+                    {
+                      "_type": "UMLParameter",
+                      "name": "fillMode",
+                      "type": "boolean"
+                    },
+                    {
+                      "_type": "UMLParameter",
+                      "name": "gc",
+                      "type": "GraphicsContext"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "drawEllipse",
+                  "visibility": "private",
+                  "isStatic": true,
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "x1",
+                      "type": "double"
+                    },
+                    {
+                      "_type": "UMLParameter",
+                      "name": "y1",
+                      "type": "double"
+                    },
+                    {
+                      "_type": "UMLParameter",
+                      "name": "x2",
+                      "type": "double"
+                    },
+                    {
+                      "_type": "UMLParameter",
+                      "name": "y2",
+                      "type": "double"
+                    },
+                    {
+                      "_type": "UMLParameter",
+                      "name": "color",
+                      "type": "Color"
+                    },
+                    {
+                      "_type": "UMLParameter",
+                      "name": "fillMode",
+                      "type": "boolean"
+                    },
+                    {
+                      "_type": "UMLParameter",
+                      "name": "gc",
+                      "type": "GraphicsContext"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "_type": "UMLClass",
+              "name": "DrawCommand",
+              "attributes": [
+                {
+                  "_type": "UMLAttribute",
+                  "name": "shape",
+                  "type": "String",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "x1",
+                  "type": "double",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "y1",
+                  "type": "double",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "x2",
+                  "type": "double",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "y2",
+                  "type": "double",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "color",
+                  "type": "Color",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "fillMode",
+                  "type": "boolean",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "gc",
+                  "type": "GraphicsContext",
+                  "visibility": "private"
+                }
+              ],
+              "operations": [
+                {
+                  "_type": "UMLOperation",
+                  "name": "execute"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "undo"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "getShape",
+                  "type": "String"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "getX1",
+                  "type": "double"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "getY1",
+                  "type": "double"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "getX2",
+                  "type": "double"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "getY2",
+                  "type": "double"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "getColor",
+                  "type": "Color"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "isFillMode",
+                  "type": "boolean"
+                }
+              ]
+            },
+            {
+              "_type": "UMLDependency",
+              "source": "DrawCommand",
+              "target": "ShapeFactory"
+            }
+          ]
+        },
+        {
+          "_type": "UMLPackage",
+          "name": "paintapp.controller",
+          "ownedElements": [
+            {
+              "_type": "UMLClass",
+              "name": "PaintController",
+              "attributes": [
+                {
+                  "_type": "UMLAttribute",
+                  "name": "canvas",
+                  "type": "Canvas",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "currentShape",
+                  "type": "String",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "currentColor",
+                  "type": "Color",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "fillMode",
+                  "type": "boolean",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "commandManager",
+                  "type": "CommandManager",
+                  "visibility": "private"
+                }
+              ],
+              "operations": [
+                {
+                  "_type": "UMLOperation",
+                  "name": "setCurrentShape",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "shape",
+                      "type": "String"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "setCurrentColor",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "color",
+                      "type": "Color"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "setFillMode",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "fillMode",
+                      "type": "boolean"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "handleMouseReleased",
+                  "visibility": "private",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "e",
+                      "type": "MouseEvent"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "_type": "UMLDependency",
+              "source": "PaintController",
+              "target": "DrawCommand"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

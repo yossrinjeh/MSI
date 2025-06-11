@@ -1,0 +1,824 @@
+{
+  "_type": "Project",
+  "name": "MVC Pattern - Paint Application",
+  "ownedElements": [
+    {
+      "_type": "UMLModel",
+      "name": "MVCPatternModel",
+      "ownedElements": [
+        {
+          "_type": "UMLPackage",
+          "name": "paintapp",
+          "ownedElements": [
+            {
+              "_type": "UMLClass",
+              "name": "Main",
+              "attributes": [
+                {
+                  "_type": "UMLAttribute",
+                  "name": "logger",
+                  "type": "LoggingManager",
+                  "visibility": "private"
+                }
+              ],
+              "operations": [
+                {
+                  "_type": "UMLOperation",
+                  "name": "start",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "primaryStage",
+                      "type": "Stage"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "main",
+                  "isStatic": true,
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "args",
+                      "type": "String[]"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_type": "UMLPackage",
+          "name": "paintapp.view",
+          "stereotype": "View",
+          "ownedElements": [
+            {
+              "_type": "UMLClass",
+              "name": "PaintView",
+              "attributes": [
+                {
+                  "_type": "UMLAttribute",
+                  "name": "root",
+                  "type": "BorderPane",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "canvas",
+                  "type": "Canvas",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "controller",
+                  "type": "PaintController",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "statusLabel",
+                  "type": "Label",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "shapeCountLabel",
+                  "type": "Label",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "parentStage",
+                  "type": "Stage",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "uiObserver",
+                  "type": "UIUpdateObserver",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "loggingObserver",
+                  "type": "LoggingObserver",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "statisticsObserver",
+                  "type": "StatisticsObserver",
+                  "visibility": "private"
+                }
+              ],
+              "operations": [
+                {
+                  "_type": "UMLOperation",
+                  "name": "PaintView",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "parentStage",
+                      "type": "Stage"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "getRoot",
+                  "type": "BorderPane"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "createMenuBar",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "createToolbar",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "createStatusBar",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "setupObservers",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "showStatistics",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "resetStatistics",
+                  "visibility": "private"
+                }
+              ]
+            },
+            {
+              "_type": "UMLClass",
+              "name": "DrawingSelectionDialog",
+              "attributes": [
+                {
+                  "_type": "UMLAttribute",
+                  "name": "parentStage",
+                  "type": "Stage",
+                  "visibility": "private"
+                }
+              ],
+              "operations": [
+                {
+                  "_type": "UMLOperation",
+                  "name": "DrawingSelectionDialog",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "parentStage",
+                      "type": "Stage"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "showAndWait",
+                  "type": "String"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_type": "UMLPackage",
+          "name": "paintapp.controller",
+          "stereotype": "Controller",
+          "ownedElements": [
+            {
+              "_type": "UMLClass",
+              "name": "PaintController",
+              "attributes": [
+                {
+                  "_type": "UMLAttribute",
+                  "name": "canvas",
+                  "type": "Canvas",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "currentShape",
+                  "type": "String",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "currentColor",
+                  "type": "Color",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "fillMode",
+                  "type": "boolean",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "commandManager",
+                  "type": "CommandManager",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "logger",
+                  "type": "LoggingManager",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "statusLabel",
+                  "type": "Label",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "databaseManager",
+                  "type": "DatabaseManager",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "currentDrawingName",
+                  "type": "String",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "parentStage",
+                  "type": "Stage",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "drawingSubject",
+                  "type": "DrawingSubject",
+                  "visibility": "private"
+                }
+              ],
+              "operations": [
+                {
+                  "_type": "UMLOperation",
+                  "name": "PaintController",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "canvas",
+                      "type": "Canvas"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "initEvents"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "setCurrentShape",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "shape",
+                      "type": "String"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "setCurrentColor",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "color",
+                      "type": "Color"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "setFillMode",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "fillMode",
+                      "type": "boolean"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "undo"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "redo"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "newDrawing"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "openDrawing"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "saveDrawing"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "saveAsDrawing"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "exitApplication"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "handleMousePressed",
+                  "visibility": "private",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "e",
+                      "type": "MouseEvent"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "handleMouseReleased",
+                  "visibility": "private",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "e",
+                      "type": "MouseEvent"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "handleMouseMoved",
+                  "visibility": "private",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "e",
+                      "type": "MouseEvent"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "updateStatus",
+                  "visibility": "private",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "message",
+                      "type": "String"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_type": "UMLPackage",
+          "name": "paintapp.model",
+          "stereotype": "Model",
+          "ownedElements": [
+            {
+              "_type": "UMLClass",
+              "name": "CommandManager",
+              "attributes": [
+                {
+                  "_type": "UMLAttribute",
+                  "name": "undoStack",
+                  "type": "Stack<Command>",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "redoStack",
+                  "type": "Stack<Command>",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "logger",
+                  "type": "LoggingManager",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "drawingSubject",
+                  "type": "DrawingSubject",
+                  "visibility": "private"
+                }
+              ],
+              "operations": [
+                {
+                  "_type": "UMLOperation",
+                  "name": "addCommand",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "cmd",
+                      "type": "Command"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "undo"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "redo"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "clearHistory"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "getUndoStack",
+                  "type": "Stack<Command>"
+                }
+              ]
+            },
+            {
+              "_type": "UMLClass",
+              "name": "DrawCommand",
+              "attributes": [
+                {
+                  "_type": "UMLAttribute",
+                  "name": "shape",
+                  "type": "String",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "x1",
+                  "type": "double",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "y1",
+                  "type": "double",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "x2",
+                  "type": "double",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "y2",
+                  "type": "double",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "color",
+                  "type": "Color",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "fillMode",
+                  "type": "boolean",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "gc",
+                  "type": "GraphicsContext",
+                  "visibility": "private"
+                }
+              ],
+              "operations": [
+                {
+                  "_type": "UMLOperation",
+                  "name": "execute"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "undo"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "getShape",
+                  "type": "String"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "getColor",
+                  "type": "Color"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "isFillMode",
+                  "type": "boolean"
+                }
+              ]
+            },
+            {
+              "_type": "UMLClass",
+              "name": "Drawing",
+              "attributes": [
+                {
+                  "_type": "UMLAttribute",
+                  "name": "id",
+                  "type": "int",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "name",
+                  "type": "String",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "createdDate",
+                  "type": "LocalDateTime",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "modifiedDate",
+                  "type": "LocalDateTime",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "drawingData",
+                  "type": "String",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "canvasWidth",
+                  "type": "double",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "canvasHeight",
+                  "type": "double",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "shapes",
+                  "type": "List<Shape>",
+                  "visibility": "private"
+                }
+              ],
+              "operations": [
+                {
+                  "_type": "UMLOperation",
+                  "name": "Drawing",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "name",
+                      "type": "String"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "getId",
+                  "type": "int"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "getName",
+                  "type": "String"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "getShapes",
+                  "type": "List<Shape>"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "setShapes",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "shapes",
+                      "type": "List<Shape>"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "_type": "UMLClass",
+              "name": "Shape",
+              "attributes": [
+                {
+                  "_type": "UMLAttribute",
+                  "name": "id",
+                  "type": "int",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "drawingId",
+                  "type": "int",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "shapeType",
+                  "type": "String",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "x1",
+                  "type": "double",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "y1",
+                  "type": "double",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "x2",
+                  "type": "double",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "y2",
+                  "type": "double",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "color",
+                  "type": "String",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "filled",
+                  "type": "boolean",
+                  "visibility": "private"
+                },
+                {
+                  "_type": "UMLAttribute",
+                  "name": "shapeOrder",
+                  "type": "int",
+                  "visibility": "private"
+                }
+              ],
+              "operations": [
+                {
+                  "_type": "UMLOperation",
+                  "name": "Shape",
+                  "parameters": [
+                    {
+                      "_type": "UMLParameter",
+                      "name": "drawingId",
+                      "type": "int"
+                    },
+                    {
+                      "_type": "UMLParameter",
+                      "name": "shapeType",
+                      "type": "String"
+                    },
+                    {
+                      "_type": "UMLParameter",
+                      "name": "x1",
+                      "type": "double"
+                    },
+                    {
+                      "_type": "UMLParameter",
+                      "name": "y1",
+                      "type": "double"
+                    },
+                    {
+                      "_type": "UMLParameter",
+                      "name": "x2",
+                      "type": "double"
+                    },
+                    {
+                      "_type": "UMLParameter",
+                      "name": "y2",
+                      "type": "double"
+                    },
+                    {
+                      "_type": "UMLParameter",
+                      "name": "color",
+                      "type": "String"
+                    },
+                    {
+                      "_type": "UMLParameter",
+                      "name": "filled",
+                      "type": "boolean"
+                    },
+                    {
+                      "_type": "UMLParameter",
+                      "name": "shapeOrder",
+                      "type": "int"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "getShapeType",
+                  "type": "String"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "getColor",
+                  "type": "String"
+                },
+                {
+                  "_type": "UMLOperation",
+                  "name": "isFilled",
+                  "type": "boolean"
+                }
+              ]
+            },
+            {
+              "_type": "UMLDependency",
+              "source": "PaintController",
+              "target": "CommandManager"
+            },
+            {
+              "_type": "UMLDependency",
+              "source": "PaintController",
+              "target": "DrawCommand"
+            },
+            {
+              "_type": "UMLAssociation",
+              "end1": {
+                "_type": "UMLAssociationEnd",
+                "reference": "CommandManager",
+                "multiplicity": "1"
+              },
+              "end2": {
+                "_type": "UMLAssociationEnd",
+                "reference": "DrawCommand",
+                "multiplicity": "*"
+              }
+            },
+            {
+              "_type": "UMLComposition",
+              "end1": {
+                "_type": "UMLAssociationEnd",
+                "reference": "Drawing",
+                "multiplicity": "1"
+              },
+              "end2": {
+                "_type": "UMLAssociationEnd",
+                "reference": "Shape",
+                "multiplicity": "*"
+              }
+            },
+            {
+              "_type": "UMLDependency",
+              "source": "Main",
+              "target": "PaintView"
+            },
+            {
+              "_type": "UMLDependency",
+              "source": "PaintView",
+              "target": "PaintController"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
