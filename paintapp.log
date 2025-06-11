@@ -211,3 +211,49 @@
 [2025-06-10 21:17:26] [INFO] Drawing Line from (947.2, 137.60000000000002) to (1031.2, 581.6) with color 0xcc3333ff and fill mode: true
 [2025-06-10 21:17:26] [DEBUG] Command added to history. Undo stack size: 13
 [2025-06-10 21:17:26] [INFO] Shape drawn successfully and added to command history
+[2025-06-11 18:15:21] [INFO] Logging strategy changed to: FileLogger
+[2025-06-11 18:15:21] [INFO] Switched to File Logging
+[2025-06-11 18:15:24] [DEBUG] Mouse pressed at coordinates: (399.0, 477.0)
+[2025-06-11 18:15:24] [DEBUG] Mouse released at coordinates: (539.0, 93.0)
+[2025-06-11 18:15:24] [INFO] Drawing Rectangle from (399.0, 477.0) to (539.0, 93.0) with color 0x000000ff and fill mode: true
+[2025-06-11 18:15:24] [DEBUG] Command added to history. Undo stack size: 5
+[2025-06-11 18:15:24] [INFO] SHAPE_ADDED: Rectangle at (399,0,477,0)-(539,0,93,0), color=BLACK, filled=true
+[2025-06-11 18:15:24] [INFO] Shape drawn successfully and added to command history
+[2025-06-11 18:15:24] [DEBUG] Mouse pressed at coordinates: (726.0, 619.0)
+[2025-06-11 18:15:25] [DEBUG] Mouse released at coordinates: (817.0, 278.0)
+[2025-06-11 18:15:25] [INFO] Drawing Rectangle from (726.0, 619.0) to (817.0, 278.0) with color 0x000000ff and fill mode: true
+[2025-06-11 18:15:25] [DEBUG] Command added to history. Undo stack size: 6
+[2025-06-11 18:15:25] [INFO] SHAPE_ADDED: Rectangle at (726,0,619,0)-(817,0,278,0), color=BLACK, filled=true
+[2025-06-11 18:15:25] [INFO] Shape drawn successfully and added to command history
+[2025-06-11 18:15:29] [DEBUG] Mouse pressed at coordinates: (609.0, 660.0)
+[2025-06-11 18:15:30] [DEBUG] Mouse released at coordinates: (593.0, 156.0)
+[2025-06-11 18:15:30] [INFO] Drawing Rectangle from (609.0, 660.0) to (593.0, 156.0) with color 0x000000ff and fill mode: true
+[2025-06-11 18:15:30] [DEBUG] Command added to history. Undo stack size: 7
+[2025-06-11 18:15:30] [INFO] SHAPE_ADDED: Rectangle at (609,0,660,0)-(593,0,156,0), color=BLACK, filled=true
+[2025-06-11 18:15:30] [INFO] Shape drawn successfully and added to command history
+[2025-06-11 19:44:51] [INFO] Logging strategy changed to: FileLogger
+[2025-06-11 19:44:51] [INFO] Switched to File Logging
+[2025-06-11 19:44:54] [DEBUG] Mouse pressed at coordinates: (358.0, 587.0)
+[2025-06-11 19:44:54] [DEBUG] Mouse released at coordinates: (414.0, 113.0)
+[2025-06-11 19:44:54] [INFO] Drawing Ellipse from (358.0, 587.0) to (414.0, 113.0) with color 0xff0000ff and fill mode: true
+[2025-06-11 19:44:54] [DEBUG] Command added to history. Undo stack size: 5
+[2025-06-11 19:44:54] [INFO] SHAPE_ADDED: Ellipse at (358,0,587,0)-(414,0,113,0), color=RED, filled=true
+[2025-06-11 19:44:54] [INFO] Shape drawn successfully and added to command history
+[2025-06-11 19:44:55] [DEBUG] Mouse pressed at coordinates: (749.0, 627.0)
+[2025-06-11 19:44:55] [DEBUG] Mouse released at coordinates: (1045.0, 266.0)
+[2025-06-11 19:44:55] [INFO] Drawing Ellipse from (749.0, 627.0) to (1045.0, 266.0) with color 0xff0000ff and fill mode: true
+[2025-06-11 19:44:55] [DEBUG] Command added to history. Undo stack size: 6
+[2025-06-11 19:44:55] [INFO] SHAPE_ADDED: Ellipse at (749,0,627,0)-(1045,0,266,0), color=RED, filled=true
+[2025-06-11 19:44:55] [INFO] Shape drawn successfully and added to command history
+[2025-06-11 19:45:01] [DEBUG] Mouse pressed at coordinates: (372.0, 400.0)
+[2025-06-11 19:45:01] [DEBUG] Mouse released at coordinates: (108.0, -20.0)
+[2025-06-11 19:45:01] [INFO] Drawing Ellipse from (372.0, 400.0) to (108.0, -20.0) with color 0xff0000ff and fill mode: true
+[2025-06-11 19:45:01] [DEBUG] Command added to history. Undo stack size: 7
+[2025-06-11 19:45:01] [INFO] SHAPE_ADDED: Ellipse at (372,0,400,0)-(108,0,-20,0), color=RED, filled=true
+[2025-06-11 19:45:01] [INFO] Shape drawn successfully and added to command history
+[2025-06-11 19:45:02] [DEBUG] Mouse pressed at coordinates: (647.0, 546.0)
+[2025-06-11 19:45:02] [DEBUG] Mouse released at coordinates: (616.0, -52.0)
+[2025-06-11 19:45:02] [INFO] Drawing Ellipse from (647.0, 546.0) to (616.0, -52.0) with color 0xff0000ff and fill mode: true
+[2025-06-11 19:45:02] [DEBUG] Command added to history. Undo stack size: 8
+[2025-06-11 19:45:02] [INFO] SHAPE_ADDED: Ellipse at (647,0,546,0)-(616,0,-52,0), color=RED, filled=true
+[2025-06-11 19:45:02] [INFO] Shape drawn successfully and added to command history
